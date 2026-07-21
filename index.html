@@ -234,6 +234,10 @@ img { display: block; }
   will-change: transform;
   filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
 }
+/* 모바일: 무거운 그림자 필터 제거로 성능 확보 */
+@media (max-width: 768px), (pointer: coarse) {
+  .rain-piece { filter: none; }
+}
 
 /* ════════════════════════════════════════════════════════════
    PANEL 4 — 전국 샌드위치 매장
@@ -838,10 +842,12 @@ img { display: block; }
 
     const layer = document.getElementById("rainLayer");
 
-    const G = 0.12;        // 중력 가속도 (완만)
-    const VMAX = 6.5;      // 종단 속도
-    const MAX = 80;        // 동시 최대 조각 수
-    const SPAWN_MS = 210;  // 생성 간격
+    // 모바일/웹 분기 — 모바일은 개수·속도 줄여 성능 확보
+    const isMobile = window.matchMedia("(max-width: 768px), (pointer: coarse)").matches;
+    const G = isMobile ? 0.07 : 0.12;      // 중력 가속도 (모바일 더 완만)
+    const VMAX = isMobile ? 3.2 : 6.5;     // 종단 속도 (모바일 느리게)
+    const MAX = isMobile ? 26 : 80;        // 동시 최대 조각 수 (모바일 적게)
+    const SPAWN_MS = isMobile ? 460 : 210; // 생성 간격 (모바일 드물게)
     const OVERLAP = 0.25;  // 쌓일 때 아래 조각에 겹쳐 들어가는 비율(프레임 여백 보정)
 
     // 좌표는 컨테이너(3p top ~ 5p bottom) 기준. 바닥 = 컨테이너 하단 = 5페이지 바닥
