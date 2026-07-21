@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SANDWICH</title>
+<title>SAND WITCH</title>
+<link rel="icon" type="image/png" href="src/logo/SAND%20WITCH_logo.png" />
+<link rel="apple-touch-icon" href="src/logo/SAND%20WITCH_logo.png" />
 
 <!-- Wanted Sans (본문) -->
 <style>
@@ -513,6 +515,9 @@ img { display: block; }
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 .topnav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6vw;
   font-family: var(--font-display);
   font-size: 1.7vw;
   line-height: 1;
@@ -522,6 +527,12 @@ img { display: block; }
   cursor: pointer;
   letter-spacing: 0.02em;
   padding: 0;
+}
+.topnav__logo {
+  height: 2.6vw;
+  max-height: 46px;
+  width: auto;
+  display: block;
 }
 .topnav__menu {
   display: flex;
@@ -600,9 +611,10 @@ img { display: block; }
   .store__caption .loc { font-size: 3.6vw; }
   .insta__track img { width: 44vw; margin-right: 6px; }
 
-  /* 네비게이션 — 한 줄에 다 들어가도록 */
+  /* 네비게이션 — 한 줄에 다 들어가도록: 모바일은 로고 아이콘만 */
   .topnav { padding: 1.4vh 3.5vw; }
-  .topnav__brand { font-size: 4vw; }
+  .topnav__wordmark { display: none; }
+  .topnav__logo { height: 7vw; max-height: 40px; }
   .topnav__menu { gap: 2.6vw; }
   .topnav__menu button { font-size: 2.9vw; }
 }
@@ -617,7 +629,10 @@ img { display: block; }
 
 <!-- 상단 네비게이션 -->
 <nav class="topnav" aria-label="페이지 내비게이션">
-  <button class="topnav__brand" data-nav="0">SANDWICH</button>
+  <button class="topnav__brand" data-nav="0">
+    <img class="topnav__logo" src="src/logo/SAND%20WITCH_logo.png" alt="SAND WITCH 로고" />
+    <span class="topnav__wordmark">SAND WITCH</span>
+  </button>
   <ul class="topnav__menu">
     <li><button data-nav="1">역사</button></li>
     <li><button data-nav="2">종류</button></li>
@@ -638,7 +653,7 @@ img { display: block; }
     <img class="veg veg--cheese"  src="src/vector/cheese_vec.png"   alt="" />
 
     <div class="hero__content">
-      <h1 class="hero__title">SANDWICH</h1>
+      <h1 class="hero__title">SAND WITCH</h1>
       <p class="hero__subtitle">
         Great things are not done by impulse,<br />
         but by a series of small things brought together. like sandwich
