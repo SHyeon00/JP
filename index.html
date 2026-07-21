@@ -419,9 +419,11 @@ img { display: block; }
   position: absolute;
   top: 0;
   left: 0;
-  pointer-events: none;
+  pointer-events: auto;   /* 클릭해서 삭제 */
+  cursor: pointer;
   filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.12));
 }
+.maker__piece:hover { filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.12)) brightness(1.08); }
 .maker__bread {
   position: absolute;
   left: 50%;
@@ -1036,6 +1038,21 @@ img { display: block; }
     tools.querySelectorAll("[data-ing]").forEach((btn) =>
       btn.addEventListener("click", () => drop(btn.dataset.ing))
     );
+
+    // 쌓인 재료 클릭 → 삭제
+    function removeOne(p) {
+      const i = pieces.indexOf(p);
+      if (i < 0) return;
+      pieces.splice(i, 1);
+      Composite.remove(engine.world, p.body);
+      p.el.remove();
+    }
+    board.addEventListener("click", (e) => {
+      const el = e.target.closest(".maker__piece");
+      if (!el) return;
+      const p = pieces.find((x) => x.el === el);
+      if (p) removeOne(p);
+    });
 
     (function frame() {
       Engine.update(engine, 1000 / 60);
