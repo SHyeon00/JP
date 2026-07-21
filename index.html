@@ -550,6 +550,61 @@ img { display: block; }
   background: var(--primary);
   border-radius: 2px;
 }
+
+/* ════════════════════════════════════════════════════════════
+   반응형 — 태블릿 / 폰에서 글씨·캐러셀 확대
+════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .headline .eyebrow { font-size: 2.6vw; }
+  .history .title,
+  .store .title,
+  .maker .title { font-size: 4.8vw; }
+  .variety .title { font-size: 6.2vw; }
+  .insta .title { font-size: 5.6vw; }
+  .hero__subtitle,
+  .history__body { font-size: 2.2vw; }
+
+  .store__card { width: 34vw; }
+  .store__caption .name { font-size: 3vw; }
+  .store__caption .loc { font-size: 2vw; }
+  .insta__track img { width: 24vw; }
+}
+
+@media (max-width: 600px) {
+  .headline .eyebrow { font-size: 3.8vw; }
+  .hero__title { font-size: 16vw; }
+  .hero__subtitle { font-size: 3.6vw; line-height: 1.5; }
+  .history .title { font-size: 7.5vw; }
+  .history__content { padding: 0 7vw; box-sizing: border-box; }
+  .history__body {
+    font-size: 3.4vw;
+    line-height: 1.75;
+    align-self: stretch;      /* 중앙정렬로 수축되지 않고 폭 채우도록 */
+    word-break: keep-all;     /* 한글 단어 단위로 줄바꿈 */
+  }
+  .history__body br { display: none; } /* 폰에선 자연 줄바꿈 */
+  .variety .title { font-size: 10vw; }
+  .store .title,
+  .maker .title { font-size: 7vw; }
+  .insta .title { font-size: 9vw; }
+
+  /* 캐러셀 크게 */
+  .store__card { width: 60vw; margin-right: 5vw; }
+  .store__caption .name { font-size: 5.2vw; }
+  .store__caption .loc { font-size: 3.6vw; }
+  .insta__track img { width: 44vw; margin-right: 6px; }
+
+  /* 네비게이션 — 한 줄에 다 들어가도록 */
+  .topnav { padding: 1.4vh 3.5vw; }
+  .topnav__brand { font-size: 4vw; }
+  .topnav__menu { gap: 2.6vw; }
+  .topnav__menu button { font-size: 2.9vw; }
+}
+@media (max-width: 380px) {
+  .topnav__brand { font-size: 3.6vw; }
+  .topnav__menu { gap: 2.2vw; }
+  .topnav__menu button { font-size: 2.7vw; }
+}
 </style>
 </head>
 <body>
